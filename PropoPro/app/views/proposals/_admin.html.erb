@@ -1,6 +1,15 @@
 <div id = "proposal">
-  YOU GET TO EDIT THIS BECAUSE YOU'RE THE ADMIN
-    <h1><%= proposal.title %></h1>
-    <h5>Prepared for <em><%= proposal.email %></em></h5>
-    <h1><%= number_to_currency(proposal.budget, precision: 0) %></h1>
+  <b>YOU GET TO EDIT THIS BECAUSE YOU'RE THE ADMIN<b>
+
+  <%= form_for :proposal, method: "patch" do |t| %>
+    <h5>Title<br><%= t.text_field :title%><br></h5>
+    <h5>Prepared for<br><em><%= t.text_field :email %></em></h5>
+    <h5>Budget<br><%= number_to_currency(t.text_field :budget, precision: 0) %></h5>
+    <h5><%= t.label "Invoice Paid?" %></h5>
+    <%= t.check_box :invoice_paid%><br>
+    <h5><%= t.label "Proposal Accepted?" %></h5>
+    <%= t.check_box :proposal_accepted%><br><br>
+    <%= t.submit "Save Changes"%>
+    <% end %>
+
 </div>

@@ -9,6 +9,7 @@
   Proposal.create(
     user_id: 1,
     admin_id: 1,
+    email: "tashapoint0h27@gmail.com",
     title: Faker::Lorem.word,
     budget: Faker::Number.between(1000, 27000),
     invoice_paid: Faker::Boolean.boolean,

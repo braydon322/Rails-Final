@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20171129203806) do
     t.integer  "admin_id"
     t.integer  "user_id"
     t.string   "title"
+    t.string   "email"
     t.integer  "budget"
     t.boolean  "invoice_paid",      default: false
     t.boolean  "proposal_accepted", default: false

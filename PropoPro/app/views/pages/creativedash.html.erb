@@ -1,7 +1,19 @@
+<head>
+  <style>
+    .proposals {
+      width: 100vw;
+      height: 2vh;
+      background: black;
+      color: white;
+      margin-bottom: 20px;
+    }
+  </style>
+</head><%= link_to "Sign Out", destroy_admin_session_path, method: "delete" %><br><br>
+
 WELCOME TO YOUR DASHBOARD CREATIVE PERSON
 
 <br><br>
 Here are all your submitted proposals.<br><br>
 <% @proposals.each do |proposal| %>
-  <%= link_to "#{proposal.title}", proposal_path(proposal) %><br>
+  <div class="proposals"><%= link_to "#{proposal.title}", proposal_path(proposal)%><br></div>
 <% end %>
