@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-#development
+# Generate Fake Inputs & Information
+gem 'faker'
+# Development
 gem 'pry'
 # Used for 'User' and 'Admin' classes.
 gem 'devise'

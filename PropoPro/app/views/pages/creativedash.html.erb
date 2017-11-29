@@ -1,1 +1,7 @@
 WELCOME TO YOUR DASHBOARD CREATIVE PERSON
+
+<br><br>
+Here are all your submitted proposals.<br><br>
+<% @proposals.each do |proposal| %>
+  <%= link_to "#{proposal.title}", proposal_path(proposal) %><br>
+<% end %>

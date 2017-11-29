@@ -15,10 +15,11 @@ class PagesController < ApplicationController
   end
 
   def companydash
-    @proposals = Proposal.find_by(:email => current_user.email)
+    @proposals = Proposal.where(:email => current_user.email)
   end
 
   def creativedash
+    @proposals = Proposal.where(:admin_id => current_admin.id)
   end
 
 end
