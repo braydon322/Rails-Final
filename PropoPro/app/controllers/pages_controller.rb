@@ -3,21 +3,19 @@ class PagesController < ApplicationController
   end
 
   def company
+    if user_signed_in?
+      sign_out current_admin
+    end
   end
 
   def creative
-    binding.pry
     if admin_signed_in?
       sign_out current_user
-      redirect_to crtv_path
     end
   end
 
   def companydash
-    if user_signed_in?
-      sign_out current_admin
-      redirect_to cmpny_path
-    end
+    @proposals = Proposal.find_by(:email => current_user.email)
   end
 
   def creativedash
