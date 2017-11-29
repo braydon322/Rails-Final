@@ -17,9 +17,13 @@
   </style>
 </head>
 <body>
-  <div id = "proposal">
-      <h1><%= @proposal.title %></h1>
-      <h5>Prepared for <em><%= @proposal.email %></em></h5>
-      <h1><%= number_to_currency(@proposal.budget, precision: 0) %></h1>
-  </div>
+  <% if user_signed_in? %>
+    <% if admin_signed_in? %>
+      <%= render partial: "admin", locals: {proposal: @proposal} %>
+    <% else %>
+      <%= render partial: "user", locals: {proposal: @proposal} %>
+    <% end %>
+  <% elsif admin_signed_in? %>
+    <%= render partial: "admin", locals: {proposal: @proposal} %>
+   <% end %>
 </body>
