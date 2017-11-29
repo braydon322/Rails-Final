@@ -1,1 +1,25 @@
-THIS PROPOSAL PAGE WILL BE FULLY MOCKED UP!
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <style>
+    body {
+      background: black;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    #proposal {
+      width: 70vw;
+      height: 70vh;
+      background: white;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id = "proposal">
+      <h1><%= @proposal.title %></h1>
+      <h5>Prepared for <em><%= @proposal.email %></em></h5>
+      <h1><%= number_to_currency(@proposal.budget, precision: 0) %></h1>
+  </div>
+</body>
