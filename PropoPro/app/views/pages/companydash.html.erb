@@ -1,7 +1,8 @@
 WELCOME TO YOUR DASHBOARD COMPANY PERSON
 
 <br><br>
-Here are all the proposals associated with your email address.<br><br>
+Here are all the proposals associated with <%= current_user.email %><br><br>
+
 <% @proposals.each do |proposal| %>
   <%= link_to "#{proposal.title}", proposal_path(proposal) %><br>
 <% end %>

@@ -4,18 +4,20 @@ class PagesController < ApplicationController
 
   def company
     if user_signed_in?
-      sign_out current_admin
+      redirect_to cmpny_path
     end
   end
 
   def creative
     if admin_signed_in?
-      sign_out current_user
+      redirect_to crtv_path
     end
   end
 
   def companydash
-    @proposals = Proposal.where(:email => current_user.email)
+    @email = current_user.email
+    @id = current_user.id
+    @proposals = Proposal.where(:user_id => @id)
   end
 
   def creativedash
