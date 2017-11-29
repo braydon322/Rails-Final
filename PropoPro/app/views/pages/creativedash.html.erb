@@ -1,12 +1,37 @@
 <head>
   <style>
+  body {
+    text-align: center;
+  }
     .proposals {
-      width: 100vw;
-      height: 2vh;
+      text-align: left;
+      position: relative;
+      width: 50vw;
+      height: 4vh;
       background: black;
       color: white;
       margin-bottom: 20px;
+      margin: auto;
     }
+
+    .proposals a span {
+      position:absolute;
+      width:100%;
+      height:100%;
+      top:0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .proposals:hover{
+      opacity: .5;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
   </style>
 </head><%= link_to "Sign Out", destroy_admin_session_path, method: "delete" %><br><br>
 
@@ -15,5 +40,14 @@ WELCOME TO YOUR DASHBOARD CREATIVE PERSON
 <br><br>
 Here are all your submitted proposals.<br><br>
 <% @proposals.each do |proposal| %>
-  <div class="proposals"><%= link_to "#{proposal.title}", proposal_path(proposal)%><br></div>
+  <div class="proposals">
+    <a href= <%= "#{proposal_path(proposal)}" %>>
+      <span>
+
+
+
+        <%= proposal.title %>
+      </span>
+    </a>
+  </div><br>
 <% end %>
