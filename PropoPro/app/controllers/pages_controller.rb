@@ -7,4 +7,12 @@ class PagesController < ApplicationController
 
   def creative
   end
+
+  def companydash
+    binding.pry
+  end
+
+  def creativedash
+  end
+
 end

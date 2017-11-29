@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+#development
+gem 'pry'
 # Used for 'User' and 'Admin' classes.
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
