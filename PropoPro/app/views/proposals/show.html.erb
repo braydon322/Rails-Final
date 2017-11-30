@@ -85,10 +85,19 @@
         <br><br>BRAYDON WHITMARSH<br>
       </div>
       <div class="right">
+
+        <% if current_user %>
+          <div id="sign-here">
+            Click Here To Sign
+          </div>
+          <br><br><%= current_user.name.upcase %><br>
+        <% elsif current_admin %>
         <div id="sign-here">
-          Click Here To Sign
-        </div>
-        <br><br><%= current_user.name.upcase %><br>
+          Not Yet Signed
+          </div>
+        <% end %>
+
+
       </div>
     </div>
 
