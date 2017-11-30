@@ -1,5 +1,12 @@
 class PagesController < ApplicationController
   def index
+    if current_user
+      redirect_to cmpny_path
+      flash[:notice] = "You are already logged in."
+    elsif current_admin
+      redirect_to crtv_path
+      flash[:notice] = "You are already logged in."
+    end
   end
 
   def company
