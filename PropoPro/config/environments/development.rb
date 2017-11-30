@@ -21,6 +21,20 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'me@braydonwhitmarsh.com'}
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.zoho.com',
+  port:                 587,
+  domain:               'www.braydonwhitmarsh.com',
+  user_name:            'me@braydonwhitmarsh.com',
+  password:             '8rayd0nW',
+  authentication:       'plain',
+  enable_starttls_auto: true
+  }
+
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.

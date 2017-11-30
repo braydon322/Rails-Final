@@ -1,0 +1,15 @@
+<div id = "proposal">
+  <b>YOU GET TO EDIT THIS BECAUSE YOU'RE THE ADMIN<b>
+
+  <%= form_for :proposal, url: proposals_path, method: :post do |t| %>
+    <h5>Title<br><%= t.text_field :title%><br></h5>
+    <h5>Prepared for<br><em><%= t.text_field :email %></em></h5>
+    <h5>Budget<br><%= number_to_currency(t.text_field :budget, precision: 0) %></h5>
+    <h5><%= t.label "Invoice Paid?" %></h5>
+    <%= t.check_box :invoice_paid%><br>
+    <h5><%= t.label "Proposal Accepted?" %></h5>
+    <%= t.check_box :proposal_accepted%><br><br>
+    <%= t.submit "Save Changes"%>
+    <% end %>
+
+</div>

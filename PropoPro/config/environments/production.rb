@@ -35,6 +35,19 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'me@braydonwhitmarsh.com'}
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.zoho.com',
+  port:                 587,
+  domain:               'www.braydonwhitmarsh.com',
+  user_name:            'me@braydonwhitmarsh.com',
+  password:             '8rayd0nW',
+  authentication:       'plain',
+  enable_starttls_auto: true
+  }
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Specifies the header that your server uses for sending files.
