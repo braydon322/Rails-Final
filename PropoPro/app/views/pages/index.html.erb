@@ -1,5 +1,95 @@
-Are you a <%= link_to "CREATIVE", creative_path%>
-<br><br>
-or a..
-<br><br>
-<%= link_to "COMPANY", company_path%>
+<head>
+  <style>
+    body {
+      background-image: url("/img/background.png");
+      background-position: center;
+      background-size: cover;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .center {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #text {
+      width: 50%;
+      font-size:30px;
+    }
+
+    #choose {
+      padding: 10px;
+      width: 100%;
+      height: 75%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+    }
+
+    .left {
+      background:rgb(81, 170, 248);
+      color: white;
+      width: 25%;
+      height: 50%;
+      margin-right: 10px;
+      border-radius: 10px;
+      font-family: Helvetica;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .left:hover {
+      opacity: .5;
+    }
+
+    .right {
+      background:rgb(81, 170, 248);
+      color: white;
+      width: 25%;
+      height: 50%;
+      border-radius: 10px;
+      font-family: Helvetica;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .right:hover {
+      opacity: .5;
+    }
+
+    a {
+      line-height: 10px;
+      color: white;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="center">
+    <div id="choose">
+      <div class="left">
+        <img src="/img/origami.svg" width="150px;">
+        <h1>I'm a <%= link_to "CREATIVE", creative_path%>
+      </div>
+      <div class="right">
+        <img src="/img/houses.svg" width="150px;">
+        <h1>I'm a <%= link_to "COMPANY", company_path%></h1>
+      </div>
+    </div>
+  </div>
+
+</body>
