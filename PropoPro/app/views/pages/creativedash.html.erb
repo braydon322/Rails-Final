@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Thu Nov 30 2017 08:58:23 GMT+0000 (UTC)  -->
-<html data-wf-page="5a1fb4193080c40001cce02d" data-wf-site="5a1fb4193080c40001cce02c">
-<head>
-  <meta charset="utf-8">
-  <title>enigma</title>
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <meta content="Webflow" name="generator">
 
-</head>
-<body>
-  <%= link_to "Sign Out", destroy_admin_session_path, method: "delete" %>
-  <a href= <%= new_proposal_path %>>
-      <h4>New Proposal</h4>
-  </a>
+
+  <div id ="proposal-content">
+
+    <%= link_to "Sign Out", destroy_admin_session_path, method: "delete" %>
+    <a href= <%= new_proposal_path %>>
+        <h4>New Proposal</h4>
+    </a>
+
     <% @proposals.each do |proposal| %>
     <%=link_to "#{proposal.title.capitalize}", proposal_path(proposal) %><br>
-    Prepared for <em><%= proposal.email %></em><br><br>
+    Prepared for <em><%= proposal.email %></em><br>
+    Created on <%= proposal.created_at.strftime("%b %d, %Y") %>
+    <br>
+    <br>
       <% end %>
-</body>
-</html>
+    </div>

@@ -46,10 +46,20 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      position: relative;
+    }
+
+    .left a span {
+      position:absolute;
+      width:100%;
+      height:100%;
+      top:0;
+      left: 0;
+      z-index: 1;
     }
 
     .left:hover {
-      opacity: .5;
+      opacity: .75;
     }
 
     .right {
@@ -64,9 +74,21 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      position: relative
     }
+
+
+    .right a span {
+      position:absolute;
+      width:100%;
+      height:100%;
+      top:0;
+      left: 0;
+      z-index: 1;
+    }
+
     .right:hover {
-      opacity: .5;
+      opacity: .75;
     }
 
     a {
@@ -83,11 +105,13 @@
     <div id="choose">
       <div class="left">
         <img src="/img/origami.svg" width="150px;">
-        <h1>I'm a <%= link_to "CREATIVE", creative_path%>
+        <h1>I'm a creative.</h1>
+          <a href= <%=creative_path%>><span></span></a>
       </div>
       <div class="right">
         <img src="/img/houses.svg" width="150px;">
-        <h1>I'm a <%= link_to "COMPANY", company_path%></h1>
+          <h1>I'm a company.</h1>
+        <a href= <%=company_path%>><span></span></a>
       </div>
     </div>
   </div>

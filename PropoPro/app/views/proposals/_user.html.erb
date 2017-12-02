@@ -3,3 +3,15 @@
     <h1><%= proposal.title %></h1>
     <h5>Prepared for <em><%= proposal.email %></em></h5>
     <h1><%= number_to_currency(proposal.budget, precision: 0) %></h1>
+
+
+<% if @proposal.proposal_accepted %>
+      <div id="sign-here">
+        You have already signed this Proposal.
+      </div>
+<% else %>
+      <div id="sign-here">
+        <%= link_to "Click here to sign this proposal.", sign_path %>
+      </div>
+<% end %>
+      <%= current_user.name.upcase %><br>

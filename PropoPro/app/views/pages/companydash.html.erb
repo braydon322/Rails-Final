@@ -1,10 +1,18 @@
-<%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
-<br><br>
-WELCOME TO YOUR DASHBOARD COMPANY PERSON
+<head>
+<style>
+</style>
+</head>
+<body>
+  <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
+  <br><br>
+  WELCOME TO YOUR DASHBOARD COMPANY PERSON
 
-<br><br>
-Here are all the proposals associated with <%= current_user.email %><br><br>
+  <br><br>
+  Here are all the proposals associated with <%= current_user.email %><br><br>
 
-<% @proposals.each do |proposal| %>
-  <%= link_to "#{proposal.title}", proposal_path(proposal) %><br>
-<% end %>
+  <div id="proposal">
+  <% @proposals.each do |proposal| %>
+    <%= link_to "#{proposal.title}", proposal_path(proposal) %><br>
+  <% end %>
+  </div>
+</body>

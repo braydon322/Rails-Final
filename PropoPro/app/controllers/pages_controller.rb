@@ -21,6 +21,9 @@ class PagesController < ApplicationController
     end
   end
 
+  def sign
+  end
+
   def companydash
     @email = current_user.email
     @id = current_user.id

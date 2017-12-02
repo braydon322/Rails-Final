@@ -1,5 +1,53 @@
-NICE TO MEET YOU... COMPANY
-<br>
-<br>
-<%= link_to "Log In", new_user_session_path %><br>
-<%= link_to "Sign Up", new_user_registration_path %>
+<style>
+
+a {
+  line-height: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+body {
+  background-image: url("/img/background.png");
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.center {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#content {
+  background:rgb(81, 170, 248);
+  color: white;
+  width: 25%;
+  height: 25%;
+  margin-right: 10px;
+  border-radius: 10px;
+  font-family: Helvetica;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+</style>
+
+<body>
+<div class="center">
+  <div id="content">
+  <h1>NICE TO MEET YOU... COMPANY</h1>
+  <br>
+  <br>
+  <h2><%= link_to "Log In", new_user_session_path %></h2>
+  <h2><%= link_to "Sign Up", new_user_registration_path%></h2><br>
+</div>
+</div

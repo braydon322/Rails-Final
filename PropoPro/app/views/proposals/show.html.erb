@@ -1,106 +1,42 @@
 <head>
   <script src='node_modules/vivus/dist/vivus.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js'></script>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <style>
-    body {
-      background: #E3EFF3;
-      text-align: center;
-      font-family: 'Montserrat', sans-serif;
-      color:#6E828A;
-    }
-
-    #proposal-body {
-      width: 70vw;
-      height: 70vh;
-      background: white;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    #info {
-      height:50%;
-      width:100%;
-    }
-
-    #signature {
-      justify-content: center;
-      align-items: center;
-      display:flex;
-      width:100%;
-      height:50%;
-    }
-
-    .left {
-      margin: 10%;
-    }
-    .right {
-      margin: 10%;
-    }
-
-    #sign-here {
-      margin-top:40px;
-      line-height: 50px;
-      background: green;
-      color: white;
-      width:200px;
-      height:50px;
-      border-radius: 20px;
-    }
-
-    svg {
-      width: 200px;
-    }
+  svg {
+    width: 200px;
+  }
   </style>
 </head>
 <body>
 
 
-
-  <div id="proposal-body">
-
-    <div id="info">
-    <% if user_signed_in? %>
-      <% if admin_signed_in? %>
-        <%= render partial: "admin", locals: {proposal: @proposal} %>
-      <% else %>
-        <%= render partial: "user", locals: {proposal: @proposal} %>
-      <% end %>
-    <% elsif admin_signed_in? %>
+  <% if user_signed_in? %>
+    <% if admin_signed_in? %>
       <%= render partial: "admin", locals: {proposal: @proposal} %>
+    <% else %>
+      <%= render partial: "user", locals: {proposal: @proposal} %>
     <% end %>
+  <% elsif admin_signed_in? %>
+    <%= render partial: "admin", locals: {proposal: @proposal} %>
+  <% end %>
+
+
+  <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 207.95 110.82" style=""><defs>
+  <style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:4px;}</style></defs><title>Signature</title>
+  <path class="cls-1 PNpRlIew_0" d="M47,60s19,55,13,80-14-7-14-7S42,81,76,56s38-7,38-7,6,14-27,52l19,14s26,27-33,18-34-15-34-15,7.5-3.5,87.5,9.5c0,0,20,2,29-1,6.81-2.27,10.18-2.82,11.42-3a2.91,2.91,0,0,1,1,.07c1.77.44,9,2,23.56,2.89,17,1,48-2,48-2" transform="translate(-31.74 -40.73)"></path>
+  <style>.PNpRlIew_0{stroke-dasharray:633 635;stroke-dashoffset:634;animation:PNpRlIew_draw 2000ms linear 0ms forwards;}@keyframes PNpRlIew_draw{100%{stroke-dashoffset:0;}}@keyframes PNpRlIew_fade{0%{stroke-opacity:1;}94.44444444444444%{stroke-opacity:1;}100%{stroke-opacity:0;}}</style>
+  </svg>
+  <script>
+  new Vivus('Layer_1', {duration: 120000}, function() {
+  $('.cls-1 PNpRlIew_0').attr('style', 'fill:none')
+  });
+  </script>
+  <br><br>BRAYDON WHITMARSH<br>
   </div>
-    <div id="signature">
-      <div class="left">
-        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 207.95 110.82" style=""><defs>
-        <style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:4px;}</style></defs><title>Signature</title>
-        <path class="cls-1 PNpRlIew_0" d="M47,60s19,55,13,80-14-7-14-7S42,81,76,56s38-7,38-7,6,14-27,52l19,14s26,27-33,18-34-15-34-15,7.5-3.5,87.5,9.5c0,0,20,2,29-1,6.81-2.27,10.18-2.82,11.42-3a2.91,2.91,0,0,1,1,.07c1.77.44,9,2,23.56,2.89,17,1,48-2,48-2" transform="translate(-31.74 -40.73)"></path>
-        <style>.PNpRlIew_0{stroke-dasharray:633 635;stroke-dashoffset:634;animation:PNpRlIew_draw 2000ms linear 0ms forwards;}@keyframes PNpRlIew_draw{100%{stroke-dashoffset:0;}}@keyframes PNpRlIew_fade{0%{stroke-opacity:1;}94.44444444444444%{stroke-opacity:1;}100%{stroke-opacity:0;}}</style>
-        </svg>
-        <script>
-        new Vivus('Layer_1', {duration: 120000}, function() {
-        $('.cls-1 PNpRlIew_0').attr('style', 'fill:none')
-        });
-        </script>
-        <br><br>BRAYDON WHITMARSH<br>
-      </div>
-      <div class="right">
+  <div class="right">
 
-        <% if current_user %>
-          <div id="sign-here">
-            Click Here To Sign
-          </div>
-          <br><br><%= current_user.name.upcase %><br>
-        <% elsif current_admin %>
-        <div id="sign-here">
-          Not Yet Signed
-          </div>
-        <% end %>
-
-
-      </div>
-    </div>
-
-  </div>
-
+<% if current_admin %>
+<br>
+  <%= link_to "Delete Proposal", proposal_path(@proposal), method: "delete"  %>
+<% end %>
 </body>

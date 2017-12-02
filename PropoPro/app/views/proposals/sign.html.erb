@@ -1,0 +1,8 @@
+BY PUTTING INFORMATION BELOW YOU ARE AGREEING TO THE TERMS OF THE PROPOSAL.
+
+<%= form_for :proposal, :url => proposal_path, :method => "patch" do |t| %>
+<h5>Name<br><%= t.text_field :name%><br></h5>
+<h5>Password<br><em><%= t.password_field :password %></em></h5>
+<h5>By checking this box you are saying that you agree to the presented terms.<%= t.check_box :proposal_accepted, :required => true %></h5>
+<%= t.submit "Sign Now"%>
+<% end %>

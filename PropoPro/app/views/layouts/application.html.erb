@@ -3,6 +3,39 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans" rel="stylesheet">
   <style>
+  /*a {
+    line-height: 10px;
+    color: white;
+    text-decoration: none;
+  }
+
+
+  body {
+    font-family: Helvetica;
+    background-image: url("/img/background.png");
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  #proposal-content {
+    background: rgb(81, 170, 248);
+    width:70%;
+    height: 70%;
+    padding: 50px;
+  }
+
+  .center {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }*/
+
   </style>
   <title>PropoPro</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -10,15 +43,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="center">
 
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
 
-<%= yield %>
+    <%= yield %>
+  </div>
 
 </body>
 </html>
