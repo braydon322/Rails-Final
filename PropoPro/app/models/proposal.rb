@@ -6,6 +6,7 @@ class Proposal < ActiveRecord::Base
   end
 
   def user=(new_user)
-    self.user_id = new_user.id 
+    self.user_id = new_user.id
   end
+
 end

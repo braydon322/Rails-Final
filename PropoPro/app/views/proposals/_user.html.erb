@@ -1,17 +1,90 @@
+<div id="overview">
+  <div class="left">
+    <h1> OVERVIEW</h1>
+  </div>
+  <div class="right">
+    <li>Title - <%= @proposal.title %></li>
+    <li>Prepared for - <em><%= @proposal.email %></em></li>
+    <li>Budget - <%= number_to_currency(@proposal.budget, precision: 0) %></li>
+  </div>
+</div>
+<br>
+<div id="why-me">
+  <div class="left">
+    <h2> WHY ME?</h2>
+  </div>
+  <div class="right">
+    <h7>Your project and my skills are a great fit. Here’s why:</h7>
+    <li> Reason 1</li>
+    <li> Reason 2</li>
+  </div>
+</div>
 
-  YOU GET TO SEE THIS BECAUSE YOU'RE THE CLIENT
+<div id="fees">
+  <div class="left">
+    <h2> FEES</h2>
+  </div>
+  <div class="right">
+    Total - <%= number_to_currency(proposal.budget, precision: 0) %>
+  </div>
+</div>
+
+<div id="milestones">
+  <div class="left">
+    <h2> MILESTONES</h2>
+  </div>
+  <div class="right">
+    <li> Milestone 1</li>
+    <li> Milestone 2</li>
+  </div>
+</div>
+
+<div id="what-next">
+  <div class="left">
+    <h2> WHAT'S NEXT</h2>
+  </div>
+  <div class="right">
+    <li> You sign this Proposal</li>
+    <li> You make the payment</li>
+    <li> I start designing</li>
+  </div>
+</div>
+
+<div id="terms">
+  <div class="left">
+    <h2> TERMS</h2>
+  </div>
+  <div class="right">
+    <li> TERM 1</li>
+    <li> TERM 2</li>
+  </div>
+</div>
+
+ <br>
+ <br>
+
+<div id="invoice">
+  Invoice Paid?
+  <% if @proposal.invoice_paid %>
+    Yes
+  <% else %>
+    No
+  <% end %>
+  <% if @proposal.proposal_accepted %>
+        <div id="sign-here">
+          This proposal was signed on <%= @proposal.created_at.strftime("%d/%m/%y")%> by <%=@proposal.user.name%>
+        </div><br><br>
+  <% else %>
+        <div id="sign-here">
+          <%= link_to "Click here to sign this proposal.", sign_path %>
+        </div><br><br>
+  <% end %>
+
+</div>
+
+
+<!--
     <h1><%= proposal.title %></h1>
     <h5>Prepared for <em><%= proposal.email %></em></h5>
     <h1><%= number_to_currency(proposal.budget, precision: 0) %></h1>
-
-
-<% if @proposal.proposal_accepted %>
-      <div id="sign-here">
-        You have already signed this Proposal.
-      </div>
-<% else %>
-      <div id="sign-here">
-        <%= link_to "Click here to sign this proposal.", sign_path %>
-      </div>
-<% end %>
-      <%= current_user.name.upcase %><br>
+ -->

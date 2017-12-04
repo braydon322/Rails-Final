@@ -3,16 +3,44 @@
 </style>
 </head>
 <body>
-  <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
-  <br><br>
-  WELCOME TO YOUR DASHBOARD COMPANY PERSON
-
-  <br><br>
+  <br>
   Here are all the proposals associated with <%= current_user.email %><br><br>
 
-  <div id="proposal">
-  <% @proposals.each do |proposal| %>
-    <%= link_to "#{proposal.title}", proposal_path(proposal) %><br>
-  <% end %>
+
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Your Proposals</h3>
+    </div>
+    <div class="panel-body">
+        <div class="list-group">
+          <% @proposals.each do |proposal| %>
+                <a href="<%= proposal_path(proposal) %>" class="list-group-item"><b><%= proposal.title %></b>
+                  <% if proposal.proposal_accepted %>
+                  <span class="label label-success"> Signed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+                  <% if proposal.invoice_paid %>
+                  <span class="label label-success">Paid <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+                  <% else %>
+                  <span class="label label-warning">Awaiting Payment</span>
+                  <% end %>
+                <% else %>
+                  <span class="label label-warning">Waiting for Signature</span>
+                  <% if proposal.invoice_paid %>
+                    <span class="label label-success">Paid <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+                  <% else %>
+                    <span class="label label-warning">Awaiting Payment</span>
+                  <% end %>
+                  <% end %>
+                <br>
+                Prepared for <em><%= proposal.email %></em>
+                </a>
+          <% end %>
+        </div>
+        <% if current_user %>
+        <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
+        <% elsif current_admin %>
+        <%= link_to "Sign Out", destroy_admin_session_path, method: "delete" %>
+        <% end %>
+    </div>
   </div>
 </body>

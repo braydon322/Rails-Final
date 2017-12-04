@@ -1,0 +1,49 @@
+<head>
+  <style>
+    body {
+      color: black;
+      margin: 0;
+      padding: 0;
+      background: grey; /* For browsers that do not support gradients */
+      background: -webkit-linear-gradient(left, #2E3192, #1BFFFF); /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(right, #2E3192, #1BFFFF); /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient(left, #2E3192, #1BFFFF); /* For Firefox 3.6 to 15 */
+      background: linear-gradient(right, #2E3192, #1BFFFF); /* Standard syntax */
+    }
+
+    input {
+      background: black;
+      font-size: 50px;
+      color: white;
+      outline: 0;
+      border: 0;
+      border-bottom: 3px solid white;
+      opacity: .5;
+    }
+
+    .center {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      display: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #centered-item {
+      display: relative;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="center">
+    <div id="centered-item">
+      <%= yield %>
+    </div>
+  </div>
+</body>

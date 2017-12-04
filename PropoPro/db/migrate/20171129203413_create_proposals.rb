@@ -6,6 +6,8 @@ class CreateProposals < ActiveRecord::Migration
       t.string :title
       t.string :email
       t.integer :budget
+      # t.string :reason
+      # t.string :milestone
       t.boolean :invoice_paid, :default => false
       t.boolean :proposal_accepted, :default => false
       t.timestamps null: false

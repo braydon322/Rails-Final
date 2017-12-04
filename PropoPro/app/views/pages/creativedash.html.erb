@@ -1,17 +1,43 @@
-
-
-  <div id ="proposal-content">
-
-    <%= link_to "Sign Out", destroy_admin_session_path, method: "delete" %>
-    <a href= <%= new_proposal_path %>>
-        <h4>New Proposal</h4>
-    </a>
-
-    <% @proposals.each do |proposal| %>
-    <%=link_to "#{proposal.title.capitalize}", proposal_path(proposal) %><br>
-    Prepared for <em><%= proposal.email %></em><br>
-    Created on <%= proposal.created_at.strftime("%b %d, %Y") %>
-    <br>
-    <br>
+<style>
+body {
+  background: #F1F1F1;;
+}
+</style>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <b>Your Proposals</b> &nbsp;
+      <button type="button" class="btn"><%= link_to "Create Proposal", new_proposal_path %></button>
+    </h3>
+  </div>
+  <div class="panel-body">
+      <div class="list-group">
+        <% @proposals.each do |proposal| %>
+              <a href="<%= proposal_path(proposal) %>" class="list-group-item"><b><%= proposal.title %></b>
+                <% if proposal.proposal_accepted %>
+                <span class="label label-success"> Signed <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+                <% if proposal.invoice_paid %>
+                <span class="label label-success">Paid <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+                <% else %>
+                <span class="label label-warning">Awaiting Payment</span>
+                <% end %>
+              <% else %>
+                <span class="label label-warning">Waiting for Signature</span>
+                <% if proposal.invoice_paid %>
+                  <span class="label label-success">Paid <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+                <% else %>
+                  <span class="label label-warning">Awaiting Payment</span>
+                <% end %>
+                <% end %>
+              <br>
+              Prepared for <em><%= proposal.email %></em>
+              </a>
+        <% end %>
+      </div>
+      <% if current_user %>
+      <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
+      <% elsif current_admin %>
+      <%= link_to "Sign Out", destroy_admin_session_path, method: "delete" %>
       <% end %>
-    </div>
+  </div>
+</div>

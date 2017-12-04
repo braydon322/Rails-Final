@@ -1,5 +1,6 @@
 class ProposalsController < ApplicationController
   def new
+    @proposal = Proposal.new
   end
 
   def show
@@ -24,7 +25,7 @@ class ProposalsController < ApplicationController
       params[:proposal][:user_id] = @user.id
       params[:proposal][:admin_id] = current_admin.id
       @proposal= Proposal.create(proposal_params)
-      @user.proposals << @proposal
+      # @user.proposals << @proposal
       # UserMailer.new_account_email(@user).deliver_now
     end
     redirect_to crtv_path
@@ -66,7 +67,7 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    params.require(:proposal).permit(:title, :budget, :invoice_paid, :proposal_accepted, :email, :user_id, :admin_id)
+    params.require(:proposal).permit(:title, :budget, :invoice_paid, :proposal_accepted, :email, :user_id, :admin_id, reason_attributes: [:reason])
   end
 
   def user_params
