@@ -15,4 +15,7 @@
     invoice_paid: Faker::Boolean.boolean,
     proposal_accepted: Faker::Boolean.boolean
   )
+
+  User.create(:email => "tashapoint0h27@gmail.com")
+  Admin.create(:email => "braydonwhitmarsh@me.com")
 end

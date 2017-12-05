@@ -6,6 +6,10 @@
       </div>
       <div class="right">
         <li>Title - <%= @proposal.title %></li>
+
+
+
+
         <li>Prepared for - <em><%= @proposal.email %></em></li>
         <li>Budget - <%= number_to_currency(@proposal.budget, precision: 0) %></li>
       </div>
@@ -108,8 +112,9 @@
   </div>
   <div class="right">
     <h7>Your project and my skills are a great fit. Here’s why:</h7>
-    <li> Reason 1</li>
-    <li> Reason 2</li>
+    <li> <%= t.text_field :reason_1%></li>
+    <li> <%= t.text_field :reason_1%></li>
+</li>
   </div>
 </div>
 
@@ -127,8 +132,8 @@
     <h2> MILESTONES</h2>
   </div>
   <div class="right">
-    <li> Milestone 1</li>
-    <li> Milestone 2</li>
+    <li> <%= t.text_field :milestone_1%></li>
+    <li> <%= t.text_field :milestone_2%></li>
   </div>
 </div>
 
@@ -148,8 +153,7 @@
     <h2> TERMS</h2>
   </div>
   <div class="right">
-    <li> TERM 1</li>
-    <li> TERM 2</li>
+    <%= t.text_area :terms%>
   </div>
 </div>
 

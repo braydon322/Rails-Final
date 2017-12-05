@@ -38,8 +38,12 @@ ActiveRecord::Schema.define(version: 20171129203806) do
     t.string   "title"
     t.string   "email"
     t.integer  "budget"
-    t.string   "reason"
-    t.string   "milestone"
+    t.string   "reason_1"
+    t.string   "reason_2"
+    t.string   "fee_details"
+    t.string   "milestone_1"
+    t.string   "milestone_2"
+    t.string   "terms"
     t.boolean  "invoice_paid",      default: false
     t.boolean  "proposal_accepted", default: false
     t.datetime "created_at",                        null: false
