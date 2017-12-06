@@ -42,9 +42,9 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   address:              'smtp.zoho.com',
   port:                 587,
-  domain:               'www.braydonwhitmarsh.com',
-  user_name:            'me@braydonwhitmarsh.com',
-  password:             '8rayd0nW',
+  # domain:               'www.braydonwhitmarsh.com',
+  # user_name:            'EMAIL',
+  # password:             'PASSWORD',
   authentication:       'plain',
   enable_starttls_auto: true
   }

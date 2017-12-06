@@ -49,6 +49,7 @@ class ProposalsController < ApplicationController
       @proposal.save
     else
       @proposal= Proposal.create(proposal_params)
+      @proposal.admin_id = current_admin.id
       @proposal.user = User.create(:admin_id => current_admin.id, :name => "", :email => params[:proposal][:email], :password => "Password123", :password_confirmation => "Password123")
       @proposal.save
     end
