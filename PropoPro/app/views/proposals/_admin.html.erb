@@ -6,10 +6,6 @@
       </div>
       <div class="right">
         <li>Title - <%= @proposal.title %></li>
-
-
-
-
         <li>Prepared for - <em><%= @proposal.email %></em></li>
         <li>Budget - <%= number_to_currency(@proposal.budget, precision: 0) %></li>
       </div>
@@ -93,16 +89,21 @@
 <%= form_for :proposal, method: "patch" do |t| %>
 
 <br>
+<div id="welcome">
+<em><b>IF YOU WOULD LIKE TO KEEP ANY FORM THE SAME, DO NOT TYPE ANYTHING IN THE TEXT FIELDS.</b></em>
+</div>
 <br>
-
 <div id="overview">
   <div class="left">
     <h1> OVERVIEW</h1>
   </div>
   <div class="right">
-    <li>Title - <%= t.text_field :title%></li>
-    <li>Prepared for - <em><%= t.text_field :email %></em></li>
-    <li>Budget - <%= number_to_currency(t.text_field :budget, precision: 0) %></li>
+    <h7>Proposal Title:</h7>
+    <%= t.text_field :title, size: 35%><br>
+    <h7>Client Email:</h7>
+    <%= t.text_field :email, size: 35, placeholder: "Prepared for:" %><br>
+    <h7>Budget:</h7>
+    <%= t.number_field :budget, size: 35 %><br>
   </div>
 </div>
 <br>
@@ -112,9 +113,9 @@
   </div>
   <div class="right">
     <h7>Your project and my skills are a great fit. Here’s why:</h7>
-    <li> <%= t.text_field :reason_1%></li>
-    <li> <%= t.text_field :reason_1%></li>
-</li>
+      <%= t.fields_for :reasons do |reason_form| %>
+        <h7><%= reason_form.text_area :content, cols: 35, rows: 5, placeholder: @proposal.reasons[0].content %></h7>
+      <% end %>
   </div>
 </div>
 
@@ -132,8 +133,11 @@
     <h2> MILESTONES</h2>
   </div>
   <div class="right">
-    <li> <%= t.text_field :milestone_1%></li>
-    <li> <%= t.text_field :milestone_2%></li>
+
+    1.<%= t.text_field :milestone_1, placeholder: "Milestone 1", size: 35 %><br>
+    2.<%= t.text_field :milestone_2, placeholder: "Milestone 2", size: 35 %><br>
+    3.<%= t.text_field :milestone_3, placeholder: "Milestone 3", size: 35 %><br>
+
   </div>
 </div>
 
@@ -142,9 +146,7 @@
     <h2> WHAT'S NEXT</h2>
   </div>
   <div class="right">
-    <li> You sign this Proposal</li>
-    <li> You make the payment</li>
-    <li> I start designing</li>
+    <p> After reading and agreeing with the terms of this proposal, go ahead and click the link at the bottom of the page to electronically sign this document. By signing the document you're agreeing to hold us to everything that you see on this page, as well as asking us to do the same to you. We are grateful for the relationship we have built together and look forward to continuing working with you.</p>
   </div>
 </div>
 
@@ -153,16 +155,11 @@
     <h2> TERMS</h2>
   </div>
   <div class="right">
-    <%= t.text_area :terms%>
+    In addition to the text below, the above typed Milestones will populate on the Client View Form
+    <%= t.text_area :terms, cols: 35, rows: 10%>
   </div>
 </div>
 
-
-<!--
-  <%= t.fields_for :reason do |reason_form| %>
-        <%= reason_form.text_field :reason %>
-    <% end %>
- -->
  <br>
  <br>
 

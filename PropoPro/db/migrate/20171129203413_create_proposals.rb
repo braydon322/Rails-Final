@@ -3,14 +3,14 @@ class CreateProposals < ActiveRecord::Migration
     create_table :proposals do |t|
       t.integer :admin_id
       t.integer :user_id
+      t.integer :reason_id
+      t.string :milestone_1
+      t.string :milestone_2
+      t.string :milestone_3
       t.string :title
       t.string :email
       t.integer :budget
-      t.string :reason_1
-      t.string :reason_2
       t.string :fee_details
-      t.string :milestone_1
-      t.string :milestone_2
       t.string :terms
       t.boolean :invoice_paid, :default => false
       t.boolean :proposal_accepted, :default => false

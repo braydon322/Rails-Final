@@ -15,8 +15,9 @@
   </div>
   <div class="right">
     <h7>Your project and my skills are a great fit. Here’s why:</h7>
-    <li> <%= @proposal.reason_1 %></li>
-    <li> <%= @proposal.reason_2 %></li>
+         <% if @proposal.reasons != [] %>
+              <em><li><%= @proposal.reasons[0].content %></li></em>
+         <% end %>
   </div>
 </div>
 
@@ -34,8 +35,9 @@
     <h2> MILESTONES</h2>
   </div>
   <div class="right">
-    <li> <%= @proposal.milestone_1 %></li>
-    <li> <%= @proposal.milestone_2 %></li>
+    <li>1. <%= @proposal.milestone_1 %></li>
+    <li>2. <%= @proposal.milestone_2 %></li>
+    <li>3. <%= @proposal.milestone_3 %></li>
   </div>
 </div>
 
@@ -44,9 +46,7 @@
     <h2> WHAT'S NEXT</h2>
   </div>
   <div class="right">
-    <li> You sign this Proposal</li>
-    <li> You make the payment</li>
-    <li> I start designing</li>
+      <p> After reading and agreeing with the terms of this proposal, go ahead and click the link at the bottom of the page to electronically sign this document. By signing the document you're agreeing to hold us to everything that you see on this page, as well as asking us to do the same to you. We are grateful for the relationship we have built together and look forward to continuing working with you.</p>
   </div>
 </div>
 
@@ -55,8 +55,11 @@
     <h2> TERMS</h2>
   </div>
   <div class="right">
-    <li> TERM 1</li>
-    <li> TERM 2</li>
+    <li> <%= @proposal.terms %></li>
+    <li>1. <%= @proposal.milestone_1 %></li>
+    <li>2. <%= @proposal.milestone_2 %></li>
+    <li>3. <%= @proposal.milestone_3 %></li>
+
   </div>
 </div>
 

@@ -1,13 +1,42 @@
 class ProposalsController < ApplicationController
   def new
     @proposal = Proposal.new
+    @proposal.reasons.build
+    # @proposal.milestones.new
   end
 
   def show
     @proposal = Proposal.find(params[:id])
   end
 
-  def sign
+  def price_up
+    @proposals = Proposal.where(:admin_id => current_admin.id).order(budget: :asc)
+    render "pages/creativedash"
+  end
+
+  def price_down
+    @proposals = Proposal.where(:admin_id => current_admin.id).order(budget: :desc)
+    render "pages/creativedash"
+  end
+
+  def date_up
+    @proposals = Proposal.where(:admin_id => current_admin.id).order(created_at: :asc)
+    render "pages/creativedash"
+  end
+
+  def date_down
+    @proposals = Proposal.where(:admin_id => current_admin.id).order(created_at: :desc)
+    render "pages/creativedash"
+  end
+
+  def signed
+    @proposals = Proposal.where(:admin_id => current_admin.id, :proposal_accepted => true)
+    render "pages/creativedash"
+  end
+
+  def unsigned
+    @proposals = Proposal.where(:admin_id => current_admin.id, :proposal_accepted => !true)
+    render "pages/creativedash"
   end
 
   def create
@@ -15,18 +44,13 @@ class ProposalsController < ApplicationController
       @user = User.find_by(:email => params[:proposal][:email])
       params[:proposal][:user_id] = @user.id
       params[:proposal][:admin_id] = current_admin.id
-      @proposal= Proposal.create(proposal_params)
-      @proposal.user = @user
-      current_admin.proposals << @proposal
-      # UserMailer.new_proposal_email(@user).deliver_now
+      @proposal = current_admin.proposals.create(proposal_params)
+      @proposal.admin_id = current_admin.id
+      @proposal.save
     else
-      password = "Password123"
-      @user = User.create(:admin_id => current_admin.id, :name => "Billy", :email => params[:proposal][:email], :password => password, :password_confirmation => password)
-      params[:proposal][:user_id] = @user.id
-      params[:proposal][:admin_id] = current_admin.id
       @proposal= Proposal.create(proposal_params)
-      # @user.proposals << @proposal
-      # UserMailer.new_account_email(@user).deliver_now
+      @proposal.user = User.create(:admin_id => current_admin.id, :name => "", :email => params[:proposal][:email], :password => "Password123", :password_confirmation => "Password123")
+      @proposal.save
     end
     redirect_to crtv_path
   end
@@ -43,12 +67,17 @@ class ProposalsController < ApplicationController
       elsif params[:proposal][:password]
         if @proposal.user.valid_password?(params[:proposal][:password])
           @proposal.update(proposal_params)
+          @proposal.user.name = params[:proposal][:name]
+          @proposal.user.save
           redirect_to cmpny_path
         else
           flash[:notice] = "Incorrect Password. Please try again"
           redirect_to sign_path
         end
       else
+
+
+
         @proposal.update(proposal_params)
         if current_admin
           redirect_to crtv_path
@@ -67,11 +96,25 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    params.require(:proposal).permit(:title, :budget, :invoice_paid, :proposal_accepted, :email, :user_id, :admin_id, reason_attributes: [:reason])
+    params.require(:proposal).permit(
+      :title,
+      :budget,
+      :invoice_paid,
+      :proposal_accepted,
+      :milestone_1,
+      :milestone_2,
+      :milestone_3,
+      :email,
+      :user_id,
+      :admin_id,
+      reasons: [
+        :id,
+        :proposal_id,
+        :content
+      ])
   end
 
   def user_params
     params.require(:user).permit(:name, :email, :password)
   end
-
 end

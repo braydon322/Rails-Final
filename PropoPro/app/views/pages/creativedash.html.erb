@@ -9,6 +9,14 @@ body {
       <b>Your Proposals</b> &nbsp;
       <button type="button" class="btn"><%= link_to "Create Proposal", new_proposal_path %></button>
     </h3>
+<br>
+    Sort By:
+    <a href= <%= up_path %>>Price<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a> |
+    <a href=<%= down_path %>>Price<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> |
+    <a href=<%= date_up_path %>>Date Created<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a> |
+    <a href=<%= date_down_path %>>Date Created<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a> |
+    <a href=<%= signed_path %>>Signed<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a> |
+    <a href=<%= unsigned_path %>>Not Signed<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
   </div>
   <div class="panel-body">
       <div class="list-group">

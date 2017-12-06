@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129203806) do
+ActiveRecord::Schema.define(version: 20171205230658) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   default: "", null: false
@@ -32,22 +32,36 @@ ActiveRecord::Schema.define(version: 20171129203806) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
+  create_table "milestones", force: :cascade do |t|
+    t.integer  "proposal_id"
+    t.string   "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "proposals", force: :cascade do |t|
     t.integer  "admin_id"
     t.integer  "user_id"
+    t.integer  "reason_id"
+    t.string   "milestone_1"
+    t.string   "milestone_2"
+    t.string   "milestone_3"
     t.string   "title"
     t.string   "email"
     t.integer  "budget"
-    t.string   "reason_1"
-    t.string   "reason_2"
     t.string   "fee_details"
-    t.string   "milestone_1"
-    t.string   "milestone_2"
     t.string   "terms"
     t.boolean  "invoice_paid",      default: false
     t.boolean  "proposal_accepted", default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+  end
+
+  create_table "reasons", force: :cascade do |t|
+    t.integer  "proposal_id"
+    t.string   "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
