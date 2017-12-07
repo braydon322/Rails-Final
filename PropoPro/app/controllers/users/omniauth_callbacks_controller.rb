@@ -1,9 +1,10 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-
+    User.all.each do |i|
+      i.delete
+    end
     @user = User.from_omniauth(request.env["omniauth.auth"])
-    sign_in_and_redirect @user   
-
+    sign_in_and_redirect @user
   end
 
   def failure

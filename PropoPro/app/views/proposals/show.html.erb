@@ -55,7 +55,7 @@
   #header {
     height: 40vh;
     padding: 5vh;
-    background-image: url("/img/5.jpg");
+    background-image: url("/images/5.jpg");
     background-size: cover;
     color: white;
     display: flex;
@@ -193,7 +193,7 @@
   }
 
   #user-sig {
-    line-height: 120px;
+    line-height: 40px;
     bottom: 0;
     font-size: 45px;
     font-family: 'Over the Rainbow', cursive;
@@ -289,22 +289,18 @@
                     <div class="sig-right">
                     <div id="user-sig">
                       <% if @proposal.proposal_accepted %>
-                        <%= @proposal.user.name %>
-                        <br>
-                    </div>
-                        <b><%= @proposal.user.email %></b>
+                          <%= @proposal.signer_name %>
+                          <br><br>
                       <% end %>
-
                     </div>
+                      <b><%= @proposal.user.email %></b>
+
                   </div>
-
-
-                      <% if current_admin %>
-                      <br>
-                        <%= link_to "Delete Proposal", proposal_path(@proposal), method: "delete"  %>
-                      <% end %>
-
-                    </div>
+                </div>
+                <% if current_admin %>
+                <br>
+                  <%= link_to "Delete Proposal", proposal_path(@proposal), method: "delete"  %>
+                <% end %>
     </div>
 </div>
 

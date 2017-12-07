@@ -66,8 +66,9 @@ class ProposalsController < ApplicationController
           redirect_to cmpny_path
         end
       elsif params[:proposal][:name]
-          @proposal.user.name = params[:proposal][:name]
-          @proposal.user.save
+          @proposal.proposal_accepted = true
+          @proposal.signer_name = params[:proposal][:name]
+          @proposal.save
           redirect_to cmpny_path
       else
 

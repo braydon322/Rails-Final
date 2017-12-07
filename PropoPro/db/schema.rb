@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20171207212843) do
     t.string   "milestone_1"
     t.string   "milestone_2"
     t.string   "milestone_3"
+    t.string   "signer_name"
     t.string   "title"
     t.string   "email"
     t.integer  "budget"

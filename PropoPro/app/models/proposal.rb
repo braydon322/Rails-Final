@@ -7,7 +7,6 @@ class Proposal < ActiveRecord::Base
   accepts_nested_attributes_for :milestones, reject_if: lambda {|attributes| attributes['content'].blank?}
 
   def user
-    # binding.pry
     User.find_or_create_by(self.user_id)
   end
 
