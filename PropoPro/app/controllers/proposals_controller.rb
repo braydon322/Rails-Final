@@ -65,16 +65,10 @@ class ProposalsController < ApplicationController
         else
           redirect_to cmpny_path
         end
-      elsif params[:proposal][:password]
-        if @proposal.user.valid_password?(params[:proposal][:password])
-          @proposal.update(proposal_params)
+      elsif params[:proposal][:name]
           @proposal.user.name = params[:proposal][:name]
           @proposal.user.save
           redirect_to cmpny_path
-        else
-          flash[:notice] = "Incorrect Password. Please try again"
-          redirect_to sign_path
-        end
       else
 
 
