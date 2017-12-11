@@ -1,28 +1,29 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+== Creative Proposal Generator - PropoPro
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+==Installation
+
+1. Go ahead and fork and clone this repository.
+2. Then go and "bundle install" to make sure all the required Gems will function in this program.
+3. "rake db:migrate"
+4. Start Your Web Server - "rails s"
+5. Start creating.
+
+I will be adding a feature which shoots out emails as new users are created, but that is still in the works.
+
+Enjoy, and Happy Coding.
+
+
+==Contributing
+
+Bug reports and pull requests are welcome. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+
+==License
+
+The app is available as open source under the terms of the <a href="http://opensource.org/licenses/MIT" rel="nofollow">MIT License</a>.
+
+==Code of Conduct
+
+Everyone interacting in the PropoPro project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.
+
+DISCLAIMER - Your client will only be able to see these proposals if this Application is deployed to Heroku or some other kind of Web Hosting service.
