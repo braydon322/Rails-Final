@@ -1,7 +1,7 @@
 == Creative Proposal Generator - PropoPro
 
 
-Installation
+==Installation
 
 1. Go ahead and fork and clone this repository.
 2. Then go and "bundle install" to make sure all the required Gems will function in this program.
@@ -14,16 +14,16 @@ I will be adding a feature which shoots out emails as new users are created, but
 Enjoy, and Happy Coding.
 
 
-Contributing
+==Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kevinYCKim33/vendough-app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+Bug reports and pull requests are welcome. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-License
+==License
 
 The app is available as open source under the terms of the MIT License.
 
-Code of Conduct
+==Code of Conduct
 
-Everyone interacting in the Vendough project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.
+Everyone interacting in the PropoPro project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.
 
 DISCLAIMER - Your client will only be able to see these proposals if this Application is deployed to Heroku or some other kind of Web Hosting service. 
