@@ -5,6 +5,10 @@ class Proposal < ActiveRecord::Base
   accepts_nested_attributes_for :reasons, reject_if: lambda {|attributes| attributes['content'].blank?}
   has_many :milestones
   accepts_nested_attributes_for :milestones, reject_if: lambda {|attributes| attributes['content'].blank?}
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :title,  presence: true, length: { maximum: 50 }
+  validates :email, presence: true , format: { with: VALID_EMAIL_REGEX }
+
 
   def user
     User.find_or_create_by(self.user_id)

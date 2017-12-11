@@ -2,239 +2,13 @@
   <script src='node_modules/vivus/dist/vivus.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js'></script>
   <link href="https://fonts.googleapis.com/css?family=Over+the+Rainbow" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/proposal-show-styles.css"/>
   <style>
-  svg {
-    width: 200px;
-  }
-
-  #welcome {
-    text-align: center;
-  }
-
-  ul {
-    list-style-type: none;
-  }
-
-  li {
-    list-style-type: none;
-  }
-
-  body {
-    background: #F1F1F1;
-  }
-
-  .center {
-    display: flex;
-    width:100%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  #proposal-container {
-    min-width: 400px;
-    width: 50vw;
-    background: black;
-    border-radius: 10px;
-    -webkit-box-shadow: 3px 3px 5px 6px rgba(68, 68, 68, 0.1);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow:    3px 3px 5px 6px rgba(68, 68, 68, 0.1);  /* Firefox 3.5 - 3.6 */
-    box-shadow:         3px 3px 5px 6px rgba(68, 68, 68, 0.1);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
-    overflow: hidden;
-  }
-
-  .proposal-content {
-    padding: 1vh;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-  }
-
-  #header {
-    height: 40vh;
-    padding: 5vh;
-    background-image: url("/images/5.jpg");
-    background-size: cover;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-      flex-direction: column;
-    min-height: 200px;
-  }
-
-
-  #header .left {
-      vertical-align: top;
-      width: 20%;
-      padding-right: 5vw;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-
-  #overview  {
-    width:50vw;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    padding-top: 1vh;
-    padding-bottom: 5vh;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: #eee;
-  }
-
-  #why-me {
-    width: 50vw;
-    display: flex;
-    padding-top: 1vh;
-    align-items: center;
-    flex-direction: row;
-    padding-bottom: 5vh;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: #eee;
-  }
-
-  #fees {
-    width: 50vw;
-    display: flex;
-    padding-top: 1vh;
-    align-items: center;
-    flex-direction: row;
-    padding-bottom: 5vh;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: #eee;
-  }
-
-  #milestones {
-   width: 50vw;
-   display: flex;
-   padding-top: 1vh;
-   align-items: center;
-   flex-direction: row;
-   padding-bottom: 5vh;
-   border-bottom-style: solid;
-   border-bottom-width: 1px;
-   border-bottom-color: #eee;
- }
-
- #what-next {
-  width: 50vw;
-  display: flex;
-  padding-top: 1vh;
-  align-items: center;
-  flex-direction: row;
-  padding-bottom: 5vh;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #eee;
-}
-
-#terms {
- width: 50vw;
- display: flex;
- align-items: center;
- padding-top: 1vh;
- flex-direction: row;
- padding-bottom: 5vh;
- border-bottom-style: solid;
- border-bottom-width: 1px;
- border-bottom-color: #eee;
-}
-
-#signatures {
-  width: 35vw;
-  display: flex;
-  align-items: center;
-  padding-top: 1vh;
-  flex-direction: row;
-  padding-bottom: 5vh;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #eee;
-}
-
-.sig-left {
-  width: 50%;
-  text-align: left;
-}
-.sig-right {
-  width: 50%;
-  text-align: right;
-}
-
-#invoice {
-  text-align: center;
-  padding-top: 1vh;
-  padding-bottom: 5vh;
-}
-
-  .left {
-    vertical-align: top;
-    width: 50%;
-    padding-right: 5vw;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
-  .left img {
-    width:5vw;
-  }
-
-  .right {
-    text-align: left;
-    width: 50%;
-  }
-
-  #user-sig {
-    line-height: 40px;
-    bottom: 0;
-    font-size: 45px;
-    font-family: 'Over the Rainbow', cursive;
-  }
-
-  h4 {
-    font-size: 1.5vw;
-    line-height: 1vw;
-  }
-
-  h5 {
-    font-size: 2vw;
-    line-height: 2vw;
-  }
-
-  h6 {
-    font-size: 4vw;
-    line-height: 2vw;
-  }
-
-  #back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding-left: 1vw;
-    padding-top:10px;
-  }
-
-
-
   </style>
 </head>
 <body>
 
 <div class="center">
-
-  <!-- <% if @proposal.proposal_accepted %>
-    <h1>The Proposal has already been signed. Here are your agreements.</h1>
-  <% else %>
-    <h1>The Proposal has not yet been signed. Go ahead and make some changes.</h1>
-  <% end %> -->
   <div id="back">
     <% if current_admin %>
       <a href= <%=crtv_path%>><button type="button" class="btn btn-default" aria-label="Left Align">
@@ -247,60 +21,53 @@
     <% end %>
   </div>
   <div id="proposal-container">
-                <div id ="header">
-
-                  <!-- <div class="left">
-                    <img src="/img/add-logo.png">
-                  </div> -->
-                  <!-- <div class="right"> -->
-                    <h6><%= @proposal.title %></h6>
-                    <h5>Prepared for <%= @proposal.email %></h5>
-                    <h4><%= @proposal.created_at.strftime("%d/%m/%y")%></h4>
-                  <!-- </div> -->
-                </div>
-                <div class="proposal-content">
-                      <% if user_signed_in? %>
-                        <% if admin_signed_in? %>
-                          <%= render partial: "admin", locals: {proposal: @proposal} %>
-                        <% else %>
-                          <%= render partial: "user", locals: {proposal: @proposal} %>
-                        <% end %>
-                      <% elsif admin_signed_in? %>
-                        <%= render partial: "admin", locals: {proposal: @proposal} %>
-                      <% end %>
-
-
-                  <div id="signatures">
-                    <div class="sig-left">
-                      <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 207.95 110.82" style=""><defs>
-                      <style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:4px;}</style></defs><title>Signature</title>
-                      <path class="cls-1 PNpRlIew_0" d="M47,60s19,55,13,80-14-7-14-7S42,81,76,56s38-7,38-7,6,14-27,52l19,14s26,27-33,18-34-15-34-15,7.5-3.5,87.5,9.5c0,0,20,2,29-1,6.81-2.27,10.18-2.82,11.42-3a2.91,2.91,0,0,1,1,.07c1.77.44,9,2,23.56,2.89,17,1,48-2,48-2" transform="translate(-31.74 -40.73)"></path>
-                      <style>.PNpRlIew_0{stroke-dasharray:633 635;stroke-dashoffset:634;animation:PNpRlIew_draw 2000ms linear 0ms forwards;}@keyframes PNpRlIew_draw{100%{stroke-dashoffset:0;}}@keyframes PNpRlIew_fade{0%{stroke-opacity:1;}94.44444444444444%{stroke-opacity:1;}100%{stroke-opacity:0;}}</style>
-                      </svg>
-                      <script>
-                      new Vivus('Layer_1', {duration: 120000}, function() {
-                      $('.cls-1 PNpRlIew_0').attr('style', 'fill:none')
-                      });
-                      </script>
-                      <br><br>
-
-                      <b><%= @proposal.admin.email %></b>
-                    </div>
-                    <div class="sig-right">
-                    <div id="user-sig">
-                      <% if @proposal.proposal_accepted %>
-                          <%= @proposal.signer_name %>
-                          <br><br>
-                      <% end %>
-                    </div>
-                      <b><%= @proposal.user.email %></b>
-
-                  </div>
-                </div>
-                <% if current_admin %>
-                <br>
-                  <%= link_to "Delete Proposal", proposal_path(@proposal), method: "delete"  %>
+        <div id ="header">
+            <h6><%= @proposal.title %></h6>
+            <h5>Prepared for <%= @proposal.email %></h5>
+            <h4><%= @proposal.created_at.strftime("%d/%m/%y")%></h4>
+        </div>
+        <div class="proposal-content">
+              <% if user_signed_in? %>
+                <% if admin_signed_in? %>
+                  <%= render partial: "admin", locals: {proposal: @proposal} %>
+                <% else %>
+                  <%= render partial: "user", locals: {proposal: @proposal} %>
                 <% end %>
+              <% elsif admin_signed_in? %>
+                <%= render partial: "admin", locals: {proposal: @proposal} %>
+              <% end %>
+          <div id="signatures">
+            <div class="sig-left">
+              <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 207.95 110.82" style=""><defs>
+              <style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:4px;}</style></defs><title>Signature</title>
+              <path class="cls-1 PNpRlIew_0" d="M47,60s19,55,13,80-14-7-14-7S42,81,76,56s38-7,38-7,6,14-27,52l19,14s26,27-33,18-34-15-34-15,7.5-3.5,87.5,9.5c0,0,20,2,29-1,6.81-2.27,10.18-2.82,11.42-3a2.91,2.91,0,0,1,1,.07c1.77.44,9,2,23.56,2.89,17,1,48-2,48-2" transform="translate(-31.74 -40.73)"></path>
+              <style>.PNpRlIew_0{stroke-dasharray:633 635;stroke-dashoffset:634;animation:PNpRlIew_draw 2000ms linear 0ms forwards;}@keyframes PNpRlIew_draw{100%{stroke-dashoffset:0;}}@keyframes PNpRlIew_fade{0%{stroke-opacity:1;}94.44444444444444%{stroke-opacity:1;}100%{stroke-opacity:0;}}</style>
+              </svg>
+              <script>
+              new Vivus('Layer_1', {duration: 120000}, function() {
+              $('.cls-1 PNpRlIew_0').attr('style', 'fill:none')
+              });
+              </script>
+              <br><br>
+              <b><%= @proposal.admin.email %></b>
+            </div>
+            <div class="sig-right">
+            <div id="user-sig">
+              <% if @proposal.proposal_accepted %>
+                  <%= @proposal.signer_name %>
+                  <br><br>
+              <% else %>
+                Proposal not yet signed!
+                <br><br>
+              <% end %>
+            </div>
+              <b><%= @proposal.user.email %></b>
+          </div>
+        </div>
+        <% if current_admin %>
+        <br>
+          <%= link_to "Delete Proposal", proposal_path(@proposal), method: "delete"  %>
+        <% end %>
     </div>
 </div>
 

@@ -2,7 +2,6 @@ class ProposalsController < ApplicationController
   def new
     @proposal = Proposal.new
     @proposal.reasons.build
-    # @proposal.milestones.new
   end
 
   def show
@@ -44,16 +43,30 @@ class ProposalsController < ApplicationController
       @user = User.find_by(:email => params[:proposal][:email])
       params[:proposal][:user_id] = @user.id
       params[:proposal][:admin_id] = current_admin.id
-      @proposal = current_admin.proposals.create(proposal_params)
-      @proposal.admin_id = current_admin.id
-      @proposal.save
+
+      if @user.blank_checker(params) > 0
+        flash[:alert] = "You cannot have any blank fields."
+        redirect_to new_proposal_path
+      else
+        flash[:notice] = "Proposal Submitted."
+        @proposal = current_admin.proposals.create(proposal_params)
+        @proposal.admin_id = current_admin.id
+        @proposal.save
+        redirect_to crtv_path
+      end
     else
-      @proposal= Proposal.create(proposal_params)
-      @proposal.admin_id = current_admin.id
-      @proposal.user = User.create(:admin_id => current_admin.id, :name => "", :email => params[:proposal][:email], :password => "Password123", :password_confirmation => "Password123")
-      @proposal.save
+      if @user.blank_checker(params) > 0
+        flash[:alert] = "You cannot have any blank fields."
+        redirect_to new_proposal_path
+      else
+        flash[:notice] = "Proposal Submitted."
+        @proposal= Proposal.create(proposal_params)
+        @proposal.admin_id = current_admin.id
+        @proposal.user = User.create(:admin_id => current_admin.id, :name => "", :email => params[:proposal][:email], :password => "Password123", :password_confirmation => "Password123")
+        @proposal.save
+        redirect_to crtv_path
+      end
     end
-    redirect_to crtv_path
   end
 
   def update
@@ -71,8 +84,6 @@ class ProposalsController < ApplicationController
           @proposal.save
           redirect_to cmpny_path
       else
-
-
 
         @proposal.update(proposal_params)
         if current_admin

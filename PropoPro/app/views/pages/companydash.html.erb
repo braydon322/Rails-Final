@@ -4,7 +4,7 @@
 </head>
 <body>
   <br>
-  Here are all the proposals associated with <%= current_user.email %><br><br>
+  Here are all your proposals.<br><br>
 
   <div class="panel panel-info">
     <div class="panel-heading">
@@ -12,6 +12,9 @@
     </div>
     <div class="panel-body">
         <div class="list-group">
+          <% if @proposals.size == 0 %>
+            You currently do not have any proposals.
+            <% end %>
           <% @proposals.each do |proposal| %>
                 <a href="<%= proposal_path(proposal) %>" class="list-group-item"><b><%= proposal.title %></b>
                   <% if proposal.proposal_accepted %>

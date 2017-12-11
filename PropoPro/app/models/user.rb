@@ -12,7 +12,14 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
     end
   end
+
+  def blank_checker(params)
+    @blank_counter = 0
+    params[:proposal].values.each do |value|
+      if value.blank?
+        @blank_counter += 1
+      end
+    end
+    @blank_counter
+  end
 end
-#
-# :admin_id => nil ,
-#  , :password => info[:credentials][:token], :password_confirmation => info[:credentials][:token]
