@@ -2,9 +2,7 @@ class Proposal < ActiveRecord::Base
   belongs_to :admin
   has_one :user, through: :admin
   has_many :reasons
-  accepts_nested_attributes_for :reasons, reject_if: lambda {|attributes| attributes['content'].blank?}
   has_many :milestones
-  accepts_nested_attributes_for :milestones, reject_if: lambda {|attributes| attributes['content'].blank?}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :title,  presence: true, length: { maximum: 50 }
   validates :email, presence: true , format: { with: VALID_EMAIL_REGEX }
